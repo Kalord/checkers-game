@@ -10,6 +10,6 @@
 class IShow
 {
 public:
-    virtual sf::Drawable& show();
+    virtual sf::Drawable& show() = 0;
     virtual ~IShow() {}
 };
