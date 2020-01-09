@@ -1,4 +1,7 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
+#include <sys/types.h>
 
 #include "IShow.hpp"
 
@@ -19,13 +22,19 @@ private:
      **/
     sf::Sprite checkerSprite;
     /**
-     * Цвет шашки
+     * Идентификатор пользователя
      **/
-    sf::Color color;
+    u_int8_t idUser;
+    /**
+     * Позиция шашки
+     **/
+    sf::Vector2f position;
     /**
      * Триггер указывающий, является ли шашка дамкой
      **/
     bool king;
 public:
+    Checker(std::string& pathToTexture, sf::Vector2f position, u_int8_t idUser);
+    ~Checker() {}
     sf::Drawable& show() override;
 };
