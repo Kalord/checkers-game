@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <string>
+#include <iostream>
 
 #include "Checker.hpp"
 #include "IShow.hpp"
@@ -27,6 +29,25 @@ private:
      **/
     std::vector<Checker> checkers;
 public:
+    Table(std::string pathToTexture);
+    ~Table() {}
+    /**
+     * Инициализация шашек
+     * u_int8_t quantity - количество шашек у одного игрока
+     * u_int8_t idUserOne - идентификатор пользователя, 
+     * который может передвигать первую группу шашек
+     * u_int8_t idUserTwo - идентификатор пользователя, 
+     * который может передвигать вторую группу шашек
+     * std::string pathToTextureOne - путь до текстур шашек первого игрока
+     * std::string pathToTextureTwo - путь до текстур шашек второго игрока
+     **/
+    void initCheckers(
+        u_int8_t quantity, 
+        u_int8_t idUserOne,
+        u_int8_t idUserTwo,
+        std::string& pathToTextureOne,
+        std::string& pathToTextureTwo
+    );
     sf::Drawable& show() override;
     std::vector<Checker>& getCheckers();
 };
