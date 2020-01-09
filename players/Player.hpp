@@ -12,6 +12,10 @@ class Player
 {
 private:
     /**
+     * Идентификатор игрока
+     **/
+    u_int8_t id;
+    /**
      * Имя игрока
      **/
     std::string name;
@@ -25,13 +29,14 @@ private:
      **/
     bool move;
 public:
-    Player(std::string name);
+    Player(u_int8_t id, std::string name);
 
+    u_int8_t getId();
     std::string getName();
     u_int8_t getScope();
 
     void incrementScope();
 
     void toggleMove();
-    bool canMove();
+    bool canMove(u_int8_t idUser);
 };

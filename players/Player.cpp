@@ -1,9 +1,14 @@
 #include "Player.hpp"
 
-Player::Player(std::string name) :
-name(name), scope(0), move(false)
+Player::Player(u_int8_t id, std::string name) :
+id(id), name(name), scope(0), move(false)
 {
     
+}
+
+u_int8_t Player::getId()
+{
+    return this->id;
 }
 
 std::string Player::getName()
@@ -16,7 +21,7 @@ u_int8_t Player::getScope()
     return this->scope;
 }
 
-void Player::incremeScope()
+void Player::incrementScope()
 {
     this->scope++;
 }
@@ -31,7 +36,7 @@ void Player::toggleMove()
     move = true;
 }
 
-bool Player::canMove()
+bool Player::canMove(u_int8_t idUser)
 {
-    return this->move;
+    return this->move && idUser == this->id;
 }
