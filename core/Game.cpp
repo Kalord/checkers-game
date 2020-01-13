@@ -14,9 +14,9 @@ Game::~Game()
 /**
  * Запуск игры
  **/
-void Game::run()
+void Game::run(size_t width, size_t height)
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Checker game");
+    sf::RenderWindow window(sf::VideoMode(width, height), "Checker game");
 
     while(window.isOpen())
     {
@@ -29,10 +29,10 @@ void Game::run()
         window.clear();
 
         window.draw(this->table->show());
-        std::vector<Checker> checkers = this->table->getCheckers(); 
+        std::vector<std::shared_ptr<Checker>> checkers = this->table->getCheckers(); 
         for(int i = 0; i < checkers.size(); i++)
         {
-            window.draw(checkers[i].show());
+            window.draw(checkers[i]->show());
         }
 
         window.display();

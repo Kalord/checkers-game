@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "../elements/Table.hpp"
 #include "../players/Player.hpp"
 
@@ -32,5 +34,5 @@ public:
     /**
      * Запуск игры
      **/
-    void run();
+    void run(size_t width, size_t height);
 };
