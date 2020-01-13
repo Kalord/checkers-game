@@ -6,6 +6,7 @@ Checker::Checker(std::string& pathToTexture, sf::Vector2f position, u_int8_t idU
     this->checkerSprite.setTexture(this->checkerTexture);
     this->position = position;
     this->checkerSprite.setPosition(this->position);
+    this->checkerSprite.setScale(1.5f, 1.5f);
     this->idUser = idUser;
 }
 
