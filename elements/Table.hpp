@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
-#include <iostream>
+#include <memory>
 
 #include "Checker.hpp"
 #include "IShow.hpp"
@@ -27,9 +27,9 @@ private:
     /**
      * Шашки
      **/
-    std::vector<Checker> checkers;
+    std::vector<std::shared_ptr<Checker>> checkers;
 public:
-    Table(std::string pathToTexture);
+    Table(std::string pathToTexture, size_t width, size_t height);
     ~Table() {}
     /**
      * Инициализация шашек
@@ -49,5 +49,5 @@ public:
         std::string& pathToTextureTwo
     );
     sf::Drawable& show() override;
-    std::vector<Checker>& getCheckers();
+    std::vector<std::shared_ptr<Checker>>& getCheckers();
 };

@@ -1,9 +1,13 @@
 #include "Table.hpp"
 
-Table::Table(std::string pathToTexture)
+Table::Table(std::string pathToTexture, size_t width, size_t height)
 {
     this->tableTexture.loadFromFile(pathToTexture);
     this->tableSprite.setTexture(this->tableTexture);
+    this->tableSprite.setScale(
+        width  / this->tableSprite.getLocalBounds().width,
+        height / this->tableSprite.getLocalBounds().height
+    );
 }
 
 sf::Drawable& Table::show()
@@ -11,7 +15,7 @@ sf::Drawable& Table::show()
     return this->tableSprite;
 }
 
-std::vector<Checker>& Table::getCheckers()
+std::vector<std::shared_ptr<Checker>>& Table::getCheckers()
 {
     return this->checkers;
 }
@@ -38,19 +42,19 @@ void Table::initCheckers(
     {
         if(i < quantity)
         {
-            Checker checker(
+            this->checkers.push_back(
+            std::shared_ptr<Checker>(new Checker(
                 pathToTextureOne,
                 sf::Vector2f(0.0f, 0.0f),
                 idUserOne
-            );
-            this->checkers.push_back(checker);
+            )));
             continue;
         }
-        Checker checker(
+        this->checkers.push_back(
+        std::shared_ptr<Checker>(new Checker(
             pathToTextureTwo,
             sf::Vector2f(0.0f, 0.0f),
             idUserTwo
-        );
-        this->checkers.push_back(checker);
+        )));
     }
 }
