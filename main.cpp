@@ -3,6 +3,7 @@
 #include "elements/Table.hpp"
 #include "elements/Checker.hpp"
 #include "players/Player.hpp"
+#include "factory/FactoryTable.hpp"
 #include "core/Game.hpp"
 
 constexpr auto WIDTH = 800;
@@ -11,8 +12,6 @@ constexpr auto NUMBER_OF_CHECKER = 18;
 
 int main()
 {
-    Table table("resources/table.png", WIDTH, HEIGHT);
-
     //@tmp
     const int idUserOne = 1;
     const int idUserTwo = 2;
@@ -20,10 +19,15 @@ int main()
     Player one(idUserOne, "John");
     Player two(idUserTwo, "Mike");
 
+    std::string textureOfTable = "resources/table.png";
     std::string textureOfWhiteChecker = "resources/white.png";
     std::string textureOfBlackChecker = "resources/black.png";
-    table.initCheckers(
-        NUMBER_OF_CHECKER, 
+
+    Table table = FactoryTable::factory(
+        textureOfTable, 
+        WIDTH, 
+        HEIGHT, 
+        NUMBER_OF_CHECKER,
         one.getId(),
         two.getId(),
         textureOfWhiteChecker,
