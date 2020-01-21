@@ -31,8 +31,7 @@ int main()
     );
 
 
-    Game game(&table, &one, &two);
-    game.run(WIDTH, HEIGHT);
+    Game::run(&table, &one, &two, WIDTH, HEIGHT);
 
     return 0;
 }

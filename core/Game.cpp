@@ -1,20 +1,15 @@
 #include "Game.hpp"
 
-Game::Game(Table* table, Player* player, Player* opponent) :
-table(table), player(player), opponent(opponent)
-{
-
-}
-
-Game::~Game()
-{
-
-}
-
 /**
  * Запуск игры
  **/
-void Game::run(size_t width, size_t height)
+void Game::run(        
+    Table* table, 
+    Player* player, 
+    Player* opponent, 
+    size_t width, 
+    size_t height
+)
 {
     sf::RenderWindow window(sf::VideoMode(width, height), "Checker game");
 
@@ -28,8 +23,8 @@ void Game::run(size_t width, size_t height)
 
         window.clear();
 
-        window.draw(this->table->show());
-        std::vector<std::shared_ptr<Checker>> checkers = this->table->getCheckers(); 
+        window.draw(table->show());
+        std::vector<std::shared_ptr<Checker>> checkers = table->getCheckers(); 
         for(int i = 0; i < checkers.size(); i++)
         {
             window.draw(checkers[i]->show());

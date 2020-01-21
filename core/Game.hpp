@@ -12,27 +12,15 @@
  **/
 class Game
 {
-private:
-    /**
-     * Доска для игры в шашки
-     **/
-    Table* table;
-
-    /**
-     * Игрок
-     **/
-    Player* player;
-
-    /**
-     * Оппонент для игры в шашки
-     **/
-    Player* opponent;
-
 public:
-    Game(Table* table, Player* player, Player* opponent);
-    ~Game();
     /**
      * Запуск игры
      **/
-    void run(size_t width, size_t height);
+    static void run(
+        Table* table, 
+        Player* player, 
+        Player* opponent, 
+        size_t width, 
+        size_t height
+    );
 };
