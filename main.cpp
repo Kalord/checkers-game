@@ -5,24 +5,29 @@
 #include "players/Player.hpp"
 #include "core/Game.hpp"
 
-#define WIDTH 800
-#define HEIGHT 600
+constexpr auto WIDTH = 800;
+constexpr auto HEIGHT = 600;
+constexpr auto NUMBER_OF_CHECKER = 18;
 
 int main()
 {
     Table table("resources/table.png", WIDTH, HEIGHT);
 
-    Player one(1, "John");
-    Player two(2, "Mike");
+    //@tmp
+    const int idUserOne = 1;
+    const int idUserTwo = 2;
 
-    std::string whiteTexture = "resources/white.png";
-    std::string blackTexture = "resources/black.png";
+    Player one(idUserOne, "John");
+    Player two(idUserTwo, "Mike");
+
+    std::string textureOfWhiteChecker = "resources/white.png";
+    std::string textureOfBlackChecker = "resources/black.png";
     table.initCheckers(
-        18, 
+        NUMBER_OF_CHECKER, 
         one.getId(),
         two.getId(),
-        whiteTexture,
-        blackTexture
+        textureOfWhiteChecker,
+        textureOfBlackChecker
     );
 
 
