@@ -18,17 +18,20 @@ Table FactoryTable::factory(
     std::shared_ptr<CheckerStorage> checkers(
         new CheckerStorage
     );
+
+    table.setSizeOfField(WIDTH / quantityRowFields, HEIGHT / quantityColumnsFields);
+
     checkers->init(
         numberOfCheckers, 
         idUserOne,
         idUserTwo,
         textureOfWhiteChecker,
-        textureOfBlackChecker
+        textureOfBlackChecker,
+        table.getWidthField(),
+        table.getHeihtField()
     );
 
     table.addCheckers(checkers);
-
-    table.setSizeOfField(WIDTH / quantityRowFields, HEIGHT / quantityColumnsFields);
 
     return table;
 }
