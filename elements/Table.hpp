@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include <sys/types.h>
 
 #include "Checker.hpp"
 #include "IShow.hpp"
@@ -30,18 +31,26 @@ private:
      **/
     std::shared_ptr<CheckerStorage> checkers;
     /**
+     * Размер доски
+     **/
+    u_int32_t width;
+    u_int32_t height;
+    /**
      * Размер ячейки
      **/
     float widthField;
     float heightField;
 public:
-    Table(std::string pathToTexture, size_t width, size_t height);
+    Table(std::string pathToTexture, u_int32_t width, u_int32_t height);
     ~Table() {}
 
     void addCheckers(std::shared_ptr<CheckerStorage> checkers)
     {
         this->checkers = checkers;
     }
+
+    u_int32_t getWidth();
+    u_int32_t getHeight();
 
     void setSizeOfField(float rows, float height);
     float getWidthField();

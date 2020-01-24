@@ -1,13 +1,25 @@
 #include "Table.hpp"
 
-Table::Table(std::string pathToTexture, size_t width, size_t height)
+Table::Table(std::string pathToTexture, u_int32_t width, u_int32_t height)
 {
     this->tableTexture.loadFromFile(pathToTexture);
     this->tableSprite.setTexture(this->tableTexture);
+    this->width = width;
+    this->height = height;
     this->tableSprite.setScale(
         width  / this->tableSprite.getLocalBounds().width,
         height / this->tableSprite.getLocalBounds().height
     );
+}
+
+u_int32_t Table::getWidth()
+{
+    return this->width;
+}
+
+u_int32_t Table::getHeight()
+{
+    return this->height;
 }
 
 void Table::setSizeOfField(float width, float height)
