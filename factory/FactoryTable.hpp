@@ -1,9 +1,11 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include <sys/types.h>
 
 #include "../elements/Table.hpp"
+#include "../elements/CheckerStorage.hpp"
 
 /**
  * Производитель доски для игры в шашки

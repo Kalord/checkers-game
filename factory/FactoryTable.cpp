@@ -14,13 +14,19 @@ Table FactoryTable::factory(
 )
 {
     Table table(textureTable, WIDTH, HEIGHT);
-    table.initCheckers(
+
+    std::shared_ptr<CheckerStorage> checkers(
+        new CheckerStorage
+    );
+    checkers->init(
         numberOfCheckers, 
         idUserOne,
         idUserTwo,
         textureOfWhiteChecker,
         textureOfBlackChecker
     );
+
+    table.addCheckers(checkers);
 
     table.setSizeOfField(WIDTH / quantityRowFields, HEIGHT / quantityColumnsFields);
 

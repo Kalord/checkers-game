@@ -7,6 +7,7 @@
 
 #include "Checker.hpp"
 #include "IShow.hpp"
+#include "CheckerStorage.hpp"
 
 /**
  * Доска для игры в шашки
@@ -27,7 +28,7 @@ private:
     /**
      * Шашки
      **/
-    std::vector<std::shared_ptr<Checker>> checkers;
+    std::shared_ptr<CheckerStorage> checkers;
     /**
      * Размер ячейки
      **/
@@ -35,23 +36,11 @@ private:
 public:
     Table(std::string pathToTexture, size_t width, size_t height);
     ~Table() {}
-    /**
-     * Инициализация шашек
-     * u_int8_t quantity - количество шашек у одного игрока
-     * u_int8_t idUserOne - идентификатор пользователя, 
-     * который может передвигать первую группу шашек
-     * u_int8_t idUserTwo - идентификатор пользователя, 
-     * который может передвигать вторую группу шашек
-     * std::string pathToTextureOne - путь до текстур шашек первого игрока
-     * std::string pathToTextureTwo - путь до текстур шашек второго игрока
-     **/
-    void initCheckers(
-        u_int8_t quantity, 
-        u_int8_t idUserOne,
-        u_int8_t idUserTwo,
-        std::string& pathToTextureOne,
-        std::string& pathToTextureTwo
-    );
+
+    void addCheckers(std::shared_ptr<CheckerStorage> checkers)
+    {
+        this->checkers = checkers;
+    }
 
     void setSizeOfField(float rows, float height);
     sf::Vector2f& getSizeOfField();
