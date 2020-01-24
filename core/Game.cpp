@@ -29,7 +29,6 @@ void Game::run(
         {
             window.draw(checkers[i]->show());
         }
-
         window.display();
     }
 }
