@@ -10,15 +10,20 @@ Table::Table(std::string pathToTexture, size_t width, size_t height)
     );
 }
 
-void Table::setSizeOfField(float rows, float height)
+void Table::setSizeOfField(float width, float height)
 {
-    this->sizeOfField.x = rows;
-    this->sizeOfField.y = height;
+    this->widthField = width;
+    this->heightField = height;
 }
 
-sf::Vector2f& Table::getSizeOfField()
+float Table::getWidthField()
 {
-    return this->sizeOfField;
+    return this->widthField;
+}
+
+float Table::getHeihtField()
+{
+    return this->heightField;
 }
 
 sf::Drawable& Table::show()

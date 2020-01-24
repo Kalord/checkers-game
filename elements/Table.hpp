@@ -32,7 +32,8 @@ private:
     /**
      * Размер ячейки
      **/
-    sf::Vector2f sizeOfField;
+    float widthField;
+    float heightField;
 public:
     Table(std::string pathToTexture, size_t width, size_t height);
     ~Table() {}
@@ -43,7 +44,8 @@ public:
     }
 
     void setSizeOfField(float rows, float height);
-    sf::Vector2f& getSizeOfField();
+    float getWidthField();
+    float getHeihtField();
 
     sf::Drawable& show() override;
     std::vector<std::shared_ptr<Checker>>& getCheckers();
