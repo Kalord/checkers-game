@@ -27,6 +27,8 @@ Table FactoryTable::factory(
         idUserTwo,
         textureOfWhiteChecker,
         textureOfBlackChecker,
+        table.getWidth(),
+        table.getHeight(),
         table.getWidthField(),
         table.getHeihtField()
     );
