@@ -8,7 +8,9 @@ Table FactoryTable::factory(
     size_t idUserOne,
     size_t idUserTwo,
     std::string& textureOfWhiteChecker,
-    std::string& textureOfBlackChecker
+    std::string& textureOfBlackChecker,
+    size_t quantityRowFields,
+    size_t quantityColumnsFields
 )
 {
     Table table(textureTable, WIDTH, HEIGHT);
@@ -19,6 +21,8 @@ Table FactoryTable::factory(
         textureOfWhiteChecker,
         textureOfBlackChecker
     );
+
+    table.setSizeOfField(WIDTH / quantityRowFields, HEIGHT / quantityColumnsFields);
 
     return table;
 }
