@@ -16,6 +16,8 @@ void CheckerStorage::init(
     u_int8_t idUserTwo,
     std::string& pathToTextureOne,
     std::string& pathToTextureTwo,
+    u_int32_t widthTable,
+    u_int32_t heightTable,
     float widthField,
     float heightField
 )
@@ -40,6 +42,11 @@ void CheckerStorage::init(
         currentUser = i < (quantityRows / 2) ? idUserOne : idUserTwo;
         currentWidth = i % 2 == 0 ? widthField : 0;
 
+        if(i == (quantityRows / 2))
+        {
+            currentHeight = heightTable;
+        }
+
         for(int j = 0; j < quantityCheckersAtRows; j++)
         {
             sf::Vector2f vector(currentWidth + offsetWidth, currentHeight - offsetHeight);
@@ -48,7 +55,13 @@ void CheckerStorage::init(
             );
             currentWidth += widthField * 2;
         }
-        currentHeight += heightField;
+        
+        if(i < (quantityRows / 2))
+        {
+            currentHeight += heightField;
+            continue;
+        }
+        currentHeight -= heightField;
     }
 }
 

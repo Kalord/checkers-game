@@ -37,6 +37,8 @@ public:
         u_int8_t idUserTwo,
         std::string& pathToTextureOne,
         std::string& pathToTextureTwo,
+        u_int32_t widthTable,
+        u_int32_t heightTable,
         float widthField,
         float heightField
     );
