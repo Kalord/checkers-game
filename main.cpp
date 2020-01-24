@@ -31,7 +31,9 @@ int main()
         one.getId(),
         two.getId(),
         textureOfWhiteChecker,
-        textureOfBlackChecker
+        textureOfBlackChecker,
+        12,
+        12
     );
 
 
