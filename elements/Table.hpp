@@ -28,6 +28,10 @@ private:
      * Шашки
      **/
     std::vector<std::shared_ptr<Checker>> checkers;
+    /**
+     * Размер ячейки
+     **/
+    sf::Vector2f sizeOfField;
 public:
     Table(std::string pathToTexture, size_t width, size_t height);
     ~Table() {}
@@ -48,6 +52,10 @@ public:
         std::string& pathToTextureOne,
         std::string& pathToTextureTwo
     );
+
+    void setSizeOfField(float rows, float height);
+    sf::Vector2f& getSizeOfField();
+
     sf::Drawable& show() override;
     std::vector<std::shared_ptr<Checker>>& getCheckers();
 };

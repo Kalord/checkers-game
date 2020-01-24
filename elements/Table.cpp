@@ -10,16 +10,6 @@ Table::Table(std::string pathToTexture, size_t width, size_t height)
     );
 }
 
-sf::Drawable& Table::show()
-{
-    return this->tableSprite;
-}
-
-std::vector<std::shared_ptr<Checker>>& Table::getCheckers()
-{
-    return this->checkers;
-}
-
 /**
  * Инициализация шашек
  * u_int8_t quantity - количество шашек у одного игрока
@@ -57,4 +47,27 @@ void Table::initCheckers(
             idUserTwo
         )));
     }
+}
+
+
+
+void Table::setSizeOfField(float rows, float height)
+{
+    this->sizeOfField.x = rows;
+    this->sizeOfField.y = height;
+}
+
+sf::Vector2f& Table::getSizeOfField()
+{
+    return this->sizeOfField;
+}
+
+sf::Drawable& Table::show()
+{
+    return this->tableSprite;
+}
+
+std::vector<std::shared_ptr<Checker>>& Table::getCheckers()
+{
+    return this->checkers;
 }
