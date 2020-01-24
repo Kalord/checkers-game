@@ -35,6 +35,5 @@ private:
     bool king;
 public:
     Checker(std::string& pathToTexture, sf::Vector2f position, u_int8_t idUser);
-    ~Checker() {}
     sf::Drawable& show() override;
 };
