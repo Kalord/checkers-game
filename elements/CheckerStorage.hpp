@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include <memory>
@@ -35,7 +36,9 @@ public:
         u_int8_t idUserOne,
         u_int8_t idUserTwo,
         std::string& pathToTextureOne,
-        std::string& pathToTextureTwo
+        std::string& pathToTextureTwo,
+        float widthField,
+        float heightField
     );
 
     std::vector<std::shared_ptr<Checker>>& getCheckers();

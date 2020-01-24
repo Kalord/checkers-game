@@ -15,28 +15,40 @@ void CheckerStorage::init(
     u_int8_t idUserOne,
     u_int8_t idUserTwo,
     std::string& pathToTextureOne,
-    std::string& pathToTextureTwo
+    std::string& pathToTextureTwo,
+    float widthField,
+    float heightField
 )
 {
-    //Расстановка шашек
-    for(u_int8_t i = 0; i < quantity * 2; i++)
+    //Стартовая позиция шашек
+    float currentWidth = widthField;
+    float currentHeight = heightField;
+    float offsetWidth = widthField / 10.0f;
+    float offsetHeight = heightField * 0.99f;
+    //Количество строк с шашками
+    u_int32_t quantityRows = quantity * 2 / 6;
+    //Количество шашек в одной строке
+    u_int32_t quantityCheckersAtRows = quantity * 2 / quantityRows;
+    //Текстура для шашки
+    std::string* currentTexture;
+    //Текущий игрок
+    u_int8_t currentUser;
+
+    for(int i = 0; i < quantityRows; i++)
     {
-        if(i < quantity)
+        currentTexture = i < (quantityRows / 2) ? &pathToTextureOne : &pathToTextureTwo;
+        currentUser = i < (quantityRows / 2) ? idUserOne : idUserTwo;
+        currentWidth = i % 2 == 0 ? widthField : 0;
+
+        for(int j = 0; j < quantityCheckersAtRows; j++)
         {
-            this->checkers.push_back(
-            std::shared_ptr<Checker>(new Checker(
-                pathToTextureOne,
-                sf::Vector2f(0.0f, 0.0f),
-                idUserOne
-            )));
-            continue;
+            sf::Vector2f vector(currentWidth + offsetWidth, currentHeight - offsetHeight);
+            this->checkers.push_back(std::shared_ptr<Checker>(
+                new Checker(*currentTexture, vector, currentUser))
+            );
+            currentWidth += widthField * 2;
         }
-        this->checkers.push_back(
-        std::shared_ptr<Checker>(new Checker(
-            pathToTextureTwo,
-            sf::Vector2f(0.0f, 0.0f),
-            idUserTwo
-        )));
+        currentHeight += heightField;
     }
 }
 
