@@ -7,6 +7,7 @@
 #include <sys/types.h>
 
 #include "Checker.hpp"
+#include "../factory/FactoryCheckers.hpp"
 
 /**
  * Хранилище шашек
